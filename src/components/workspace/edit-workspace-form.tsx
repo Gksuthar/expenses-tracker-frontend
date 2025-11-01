@@ -60,7 +60,7 @@ export default function EditWorkspaceForm() {
       workspaceId: workspaceId,
       data: { ...values },
     };
-    mutate(payload, {
+    mutate(payload as any, {
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: ["workspace"],

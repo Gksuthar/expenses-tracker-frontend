@@ -76,7 +76,7 @@ export default function EditProjectForm(props: {
       workspaceId,
       data: { emoji, ...values },
     };
-    mutate(payload, {
+    mutate(payload as any, {
       onSuccess: (data) => {
         queryClient.invalidateQueries({
           queryKey: ["singleProject", projectId],

@@ -152,7 +152,7 @@ export default function CreateTaskForm(props: {
       },
     };
 
-    mutate(payload, {
+    mutate(payload as any, {
       onSuccess: () => {
         queryClient.invalidateQueries({
           queryKey: ["project-analytics", projectId],

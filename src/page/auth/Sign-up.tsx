@@ -56,7 +56,7 @@ const SignUp = () => {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log("Submitting registration form with values:", values);
     if (isPending) return;
-    mutate(values, {
+    mutate(values as any, {
       onSuccess: () => {
         navigate("/");
       },

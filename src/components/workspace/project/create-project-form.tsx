@@ -69,7 +69,7 @@ export default function CreateProjectForm({
         ...values,
       },
     };
-    mutate(payload, {
+    mutate(payload as any, {
       onSuccess: (data) => {
         const project = data.project;
         queryClient.invalidateQueries({

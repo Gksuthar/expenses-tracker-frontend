@@ -55,7 +55,7 @@ const SignIn = () => {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     if (isPending) return;
 
-    mutate(values, {
+    mutate(values as any, {
       onSuccess: (data) => {
         const user = data.user;
         console.log(user);
