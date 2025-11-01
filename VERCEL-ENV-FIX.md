@@ -2,8 +2,8 @@
 
 ## Problem
 Frontend is calling OLD backend URL:
-- ❌ Calling: `https://expenses-tracker-backend-2-9z66.onrender.com`
-- ✅ Should call: `https://expenses-tracker-backend-5-dlni.onrender.com`
+- ❌ Calling: `https://expenses-tracker-backend-6-64xq.onrender.com`
+- ✅ Should call: `https://expenses-tracker-backend-6-64xq.onrender.com`
 
 ---
 
@@ -29,12 +29,12 @@ Click the **"..."** (three dots) → **"Edit"**
 
 Change value from:
 ```
-❌ https://expenses-tracker-backend-2-9z66.onrender.com/api
+❌ https://expenses-tracker-backend-6-64xq.onrender.com/api
 ```
 
 To:
 ```
-✅ https://expenses-tracker-backend-5-dlni.onrender.com/api
+✅ https://expenses-tracker-backend-6-64xq.onrender.com/api
 ```
 
 ### Step 7: Save
@@ -52,7 +52,7 @@ Click **"Save"**
 
 Your local `.env` is already correct:
 ```
-VITE_API_BASE_URL="https://expenses-tracker-backend-5-dlni.onrender.com/api"
+VITE_API_BASE_URL="https://expenses-tracker-backend-6-64xq.onrender.com/api"
 ```
 
 You can make a small change to trigger Vercel to rebuild:
@@ -71,7 +71,7 @@ Vercel will auto-deploy with new environment variable.
 ## After Fix, Browser Console Should Show:
 
 ```
-✅ GET https://expenses-tracker-backend-5-dlni.onrender.com/api/user/current
+✅ GET https://expenses-tracker-backend-6-64xq.onrender.com/api/user/current
 ✅ Status: 200 OK
 ✅ No CORS errors
 ```
