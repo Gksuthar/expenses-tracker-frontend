@@ -5,11 +5,25 @@ const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 const options = {
   baseURL,
-  withCredentials: true,
+  withCredentials: false, // No cookies needed with JWT
   timeout: 10000,
 };
 
 const API = axios.create(options);
+
+// Add JWT token to all requests
+API.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 API.interceptors.response.use(
   (response) => {
@@ -21,7 +35,9 @@ API.interceptors.response.use(
       const resp = error.response || {};
       const { data, status } = resp;
 
-    if (data === "Unauthorized" && status === 401) {
+    if (status === 401) {
+      // Token expired or invalid - clear and redirect to login
+      localStorage.removeItem("token");
       window.location.href = "/";
     }
 

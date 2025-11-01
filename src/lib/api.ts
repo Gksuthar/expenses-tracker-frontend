@@ -30,13 +30,27 @@ export const loginMutationFn = async (
   data: loginType
 ): Promise<LoginResponseType> => {
   const response = await API.post("/auth/login", data);
+  // Store JWT token in localStorage
+  if (response.data.token) {
+    localStorage.setItem("token", response.data.token);
+  }
   return response.data;
 };
 
-export const registerMutationFn = async (data: registerType) =>
-  await API.post("/auth/register", data);
+export const registerMutationFn = async (data: registerType) => {
+  const response = await API.post("/auth/register", data);
+  // Store JWT token in localStorage
+  if (response.data.token) {
+    localStorage.setItem("token", response.data.token);
+  }
+  return response.data;
+};
 
-export const logoutMutationFn = async () => await API.post("/auth/logout");
+export const logoutMutationFn = async () => {
+  // Remove JWT token from localStorage
+  localStorage.removeItem("token");
+  return await API.post("/auth/logout");
+};
 
 export const getCurrentUserQueryFn =
   async (): Promise<CurrentUserResponseType> => {

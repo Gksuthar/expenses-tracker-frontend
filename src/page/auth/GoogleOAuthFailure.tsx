@@ -1,10 +1,25 @@
 import Logo from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const GoogleOAuthFailure = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const token = searchParams.get("token");
+    const workspace = searchParams.get("workspace");
+    const status = searchParams.get("status");
+
+    if (status === "success" && token && workspace) {
+      // Store JWT token from Google OAuth
+      localStorage.setItem("token", token);
+      // Navigate to workspace
+      navigate(`/workspace/${workspace}`);
+    }
+  }, [searchParams, navigate]);
 
   return (
     <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
