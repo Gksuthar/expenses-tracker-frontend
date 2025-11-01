@@ -25,7 +25,7 @@ const WorkspaceAnalytics = () => {
       <AnalyticsCard
         isLoading={isPending}
         title="Pending Task"
-        value={analytics?.PendingTask || 0}
+        value={analytics?.totalTasks || 0}
       />
       <AnalyticsCard
         isLoading={isPending}
@@ -40,12 +40,12 @@ const WorkspaceAnalytics = () => {
       <AnalyticsCard
         isLoading={isPending}
         title="On Track"
-        value={analytics?.Track || 0}
+        value={analytics?.totalTasks || 0}
       />
       <AnalyticsCard
         isLoading={isPending}
         title="Days Left"
-        value={analytics?.Days || 0}
+        value={0}
       />
     </div>
   );
